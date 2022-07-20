@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+<h2 class="text-center">Add Student</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+</form>
+<br>
+<h2 class="text-center">List of Student</h2>
+    {% if records %}
+    <table border="3">
+        <tr>
+        <thead>
+        <th>ID</th>
+        <th>Nmae</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Mob No</th>
+        </thead>
+        {% for data in records %}
+        <tbody>
+
+        <td>{{data.ID}}</td>
+        <td>{{data.Name}}</td>
+        <td>{{data.Age}}</td>
+        <td>{{data.Gender}}</td>
+        <td>{{data.Mob_no}}</td>
+        </tbody>
+        {% endfor %}
+        {% endif %}
+        </tr>
+    </table>
+</div>
+</body>
+</html>
